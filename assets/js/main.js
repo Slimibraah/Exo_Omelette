@@ -1,0 +1,1 @@
+import {maison} from "./instance";
