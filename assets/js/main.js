@@ -28,8 +28,11 @@ slimi.viderBol();
 
 console.log(bol);
 console.log(poele);
-
+setTimeout(() => {
+    console.log("Sa chauffe");
+}, 3000);
 poele.cuir();
+
 
 console.log(poele.contenu[0]);
 
