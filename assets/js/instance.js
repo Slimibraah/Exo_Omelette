@@ -1,39 +1,34 @@
-import {Personne,Lieu, Ingredients} from './class.js'
+import {Personne,Lieu,Ingredients} from './class.js'
 
-// Lieu
 let maison = new Lieu('Maison',[])
 let epicerie = new Lieu('Epicerie',[])
-epicerie.bacpaniers = [
+epicerie.bacPaniers = [
     {nom:'panier 1', contenu : []},
     {nom:'panier 2', contenu : []},
-    {nom:'panier 3', contenu : []},
+    {nom:'panier 3', contenu : []}
 ]
+let nullePart = new Lieu ('nullePart', [])
 
-epicerie.ingredients = []
-
-// Personnes
-let Salim = new Personne('Salim',maison,2000,[],[])
-
-// Ingredients
+let slimi = new Personne('Slimi',nullePart,200,[],[])
 
 let oeuf = new Ingredients('Oeuf','entier',2)
-let sel = new Ingredients('sel','moulu',1)
-let chaktar = new Ingredients('chaktar','entier',2)
-let huiledo = new Ingredients('huiledo','liquide',2)
-let poivron = new Ingredients('poivron','entier',3,50)
+let huile = new Ingredients('huile','liquide',2)
+let poivre = new Ingredients('poivre','moulu',2)
+let lait = new Ingredients('lait','liquide',2)
+let chaktar = new Ingredients('Chaktar','entier',3,50)
 
-// objet simples 
-let bolle = {
-    nom : 'Bolle',
+epicerie.ingredients = [oeuf,huile,poivre,lait,chaktar]
+
+let bol = {
+    nom : 'bol',
     contenu : [],
-    melanger(nommelange){
+    melanger(nomMelange){
         let newMelange = {
-            nom : nommelange,
+            nom : nomMelange,
             etat : 'pas cuit'
         }
-        while (this.contenu.length > 0) {
-            this.contenu.shift();
-            
+        while(this.contenu.length > 0){
+            this.contenu.shift()
         }
         this.contenu.push(newMelange)
     }
@@ -41,16 +36,24 @@ let bolle = {
 
 let couteau = {
     nom : 'Couteau',
-    couper = (ingredients) => {
+    couper (ingredients){
         if (ingredients.etat == 'entier') {
             ingredients.etat = 'coupé'
-            console.log('Je découpe ${ingredients.nom}');
+            console.log(`Je découpe ${ingredients.nom}`);
 
         }
     }
 }
+
 let poele = {
     nom : 'Poele',
-    contenu : []
-    
+    contenu : [],
+    cuir(){
+        setTimeout(()=> {this.contenu[0].etat = 'cuite';
+        console.log(`Votre omelette est prête !`);
+    }, 4000)
+    } 
 }
+
+
+export {maison,epicerie,slimi,oeuf,huile,poivre,lait,chaktar,bol,couteau,poele,nullePart}
